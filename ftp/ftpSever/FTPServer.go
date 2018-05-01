@@ -41,6 +41,7 @@ func main() {
 		if err == io.EOF {
 			fmt.Println("调用ReadString出错")
 			conn.Close()
+			return
 		}
 		fmt.Print(line) //产生大量的0的打印
 		line  =  strings.TrimSpace(line)
