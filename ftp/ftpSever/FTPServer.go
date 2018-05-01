@@ -34,19 +34,19 @@ func main() {
 	if err != nil {
 	log.Fatal(err)
 	}
-	conn.Write([]byte("欢迎使用陈涛权开发的FTP编程服务器!"))
+	conn.Write([]byte("欢迎使用陈涛权开发的FTP编程服务器，这是服务器端给客户端发送的响应消息!"))
 	r :=bufio.NewReader(conn)
 	for {
 		line,err := r.ReadString('\n') //将r的内容按照换行符读取。
-		if err != io.EOF {
+		if err == io.EOF {
 			fmt.Println("调用ReadString出错")
 			conn.Close()
 		}
-		fmt.Print(line)
+		fmt.Print(line) //产生大量的0的打印
 		line  =  strings.TrimSpace(line)
 		fmt.Println(len(strings.Fields(line)))
 		if len(line) == 0 {
-			fmt.Println("读取到的内容为空")
+			//fmt.Println("读取到的内容为空") //这个也先注释掉，也会产生大量的打印
 			continue
 		}
 		cmd = strings.Fields(line)[0]
