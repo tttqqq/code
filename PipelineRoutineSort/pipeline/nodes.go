@@ -111,3 +111,7 @@ func RandomSource(count int) <- chan int{
 		}()
 		return out
 }
+
+func MergeN(inputs ...<-chan int) <- chan int {
+
+}
