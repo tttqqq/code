@@ -1,5 +1,6 @@
 #pragma once
 
+//pdf 例子是错误的，参考wiki:https://www.cnblogs.com/jiese/p/3190414.html
 class Command
 {
 public:
