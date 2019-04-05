@@ -40,7 +40,7 @@ public class LockingMappedFiles {
                     buff.put((byte)(buff.get()+1));
                 }
                 fl.release();
-                System.out.println("Released: "+start+" to " + end);
+                System. .println("Released: "+start+" to " + end);
             }catch (IOException e){
                 throw new RuntimeException(e);
             }
