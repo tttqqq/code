@@ -25,7 +25,9 @@ Git1.7.0以后加入了Sparse Checkout模式，这使得Check Out指定文件或
 
 例如：
 $ echo README.md >> .git/info/sparse-checkout
+  
 $ echo apps/register.go >> .git/info/sparse-checkout
+  
 $ echo resource >> .git/info/sparse-checkout
 
 最后一步，拉取想要的分支
