@@ -8,7 +8,7 @@ $ git init
 
 $ git remote add -f origin <url>
 
-我的操作：$ git remote add -f origin https://github.com/aliyun/alicloud-android-demo.git
+我的操作：$ git remote add -f origin git@github.com:tttqqq/code.git
 
 然后控制台会显示一些updating...信息。注意，这里的url必须是.git结尾的。
 
