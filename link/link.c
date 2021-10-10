@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
+#include<time.h>
 
 typedef struct node
 {
@@ -10,9 +11,10 @@ typedef struct node
 
 int CreatLink(nodeInfo *pMove, int len)
 {
+    srand((unsigned int)time(0));
     for (int i = 0; i < len; i++) {
         nodeInfo *pTemp = malloc(sizeof(nodeInfo));
-        pTemp->data = i;
+        pTemp->data = rand() % 100 + 1;
         pTemp->pNext = NULL;
         pMove->pNext = pTemp;
         pMove = pTemp;
@@ -20,6 +22,7 @@ int CreatLink(nodeInfo *pMove, int len)
 
     return 0;
 }
+
 int ShowLink(nodeInfo *pMove)
 {
     if (pMove == NULL) {
@@ -70,6 +73,37 @@ int InsertLink(nodeInfo *pMove, int index, int element)
     pTemp->pNext = pMove->pNext;
     pMove->pNext = pTemp;
 
+    return 0;
+}
+
+// 头结点为index 0，
+int DeletetLink(nodeInfo *pMove, int index)
+{
+    int linkLenth = 0;
+    GetLinkLength(pMove, &linkLenth);
+
+    if (pMove == NULL || index < 1 || index > linkLenth) {
+        return -1;
+    }
+
+    nodeInfo *pStart = pMove;
+
+    for (int i = 0; i < index - 1; i++) {
+            pMove = pMove->pNext;
+    }
+
+    if (pMove->pNext->pNext == NULL) {
+        free(pMove->pNext);
+        pMove->pNext = NULL;
+    }
+    else {
+        nodeInfo *pTemp = pMove->pNext->pNext;
+        free(pMove->pNext);
+        pMove->pNext = pTemp;
+    }
+
+    printf("the deleted link success, and new link below:\n");
+    ShowLink(pStart);
     return 0;
 }
 
@@ -151,6 +185,29 @@ int ReverseLink2(nodeInfo *pHead)
     return 0;
 }
 
+int SortLink(nodeInfo *pHead)
+{
+    if (pHead == NULL) {
+        return -1;
+    }
+
+    if (pHead->pNext == NULL) { // only one element
+        return 0;
+    }
+
+    for(nodeInfo *pNode1 = pHead->pNext; pNode1->pNext != NULL; pNode1 = pNode1->pNext) {
+        for (nodeInfo *pNode2 = pNode1->pNext; pNode2 != NULL; pNode2 = pNode2->pNext)
+        {
+            if (pNode1->data > pNode2->data) {
+                int temp = pNode2->data;
+                pNode2->data = pNode1->data;
+                pNode1->data = temp;
+            }
+        }
+    }
+    return 0;
+}
+
 int main(void)
 {
     nodeInfo *pMove = malloc(sizeof(nodeInfo));
@@ -172,5 +229,13 @@ int main(void)
     ShowLink(pMove);
 
     ReverseLink2(pMove);
+
+    if (DeletetLink(pMove, 6) != 0) {
+        printf("insertLink error\n");
+    }
+
+    printf("the pop sort link is as follows:\n");
+    SortLink(pMove);
+    ShowLink(pMove);
     return 0;
 }
