@@ -48,4 +48,4 @@ d3d9x.lib报含到项目中来。其实在IDE中也可以手动的设置把lib�
 
 
 关于结构里包含结构体的计算参考blog:
-https://blog.csdn.net/Eunice_fan1207/article/details/79696981
+https://blog.csdn.net/xsydalao/article/details/97395959?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-3.no_search_link&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-3.no_search_link
